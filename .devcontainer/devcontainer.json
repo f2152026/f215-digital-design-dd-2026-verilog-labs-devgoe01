@@ -1,0 +1,27 @@
+{
+  "name": "CS-215 Digital Design Labs",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mshr-h.veriloghdl",
+        "lramseyer.vaporview",
+        "SpecStory.specstory-vscode",
+        "github.copilot",
+        "github.copilot-chat"
+      ],
+      "settings": {
+        "github.copilot.chat.useInstructionFiles": true,
+        "github.copilot.inlineSuggest.enable": false,
+        "github.copilot.enable": {
+          "*": false
+        },
+        "github.copilot.nextEditSuggestions.enabled": false
+      }
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "chmod +x scripts/*.sh && ./scripts/install_extension.sh"
+}

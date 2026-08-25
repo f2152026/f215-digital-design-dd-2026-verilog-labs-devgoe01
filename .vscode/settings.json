@@ -1,0 +1,25 @@
+{
+    "files.exclude": {
+        ".devcontainer": true,
+        "scripts": true,
+        ".gitignore": true,
+        ".gitattributes": true,
+        "LICENSE": true,
+        ".vscode": true,
+        ".github": true,
+        ".classroom50.yaml": true,
+        "README.md": true,
+        ".specstory": true,
+        "classroom50-helper-extension": true,
+        "labs/lab*/*.png": true
+    },
+    "github.copilot.chat.useInstructionFiles": true,
+    "github.copilot.inlineSuggest.enable": false,
+    "github.copilot.enable": {
+        "*": false
+    },
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    }
+}

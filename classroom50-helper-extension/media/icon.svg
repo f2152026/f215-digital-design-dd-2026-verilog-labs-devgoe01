@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+    <!-- Stylized Classroom/Graduation logo -->
+    <path fill="#007ACC" d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+    <path fill="#007ACC" d="M5 13.18v4c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4l-7 3.82-7-3.82z" opacity="0.8"/>
+</svg>

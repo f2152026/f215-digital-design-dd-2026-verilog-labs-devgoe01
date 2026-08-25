@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Task 1 - Full Adder Gates Simulation",
+    "type": "io",
+    "setup": "./scripts/compile.sh lab01 task1 labs/lab01/task1/tb.v",
+    "run": "./scripts/run.sh lab01 task1 labs/lab01/task1/tb.v",
+    "expected": "35 a=1 b=1 cin=1 | sum=1 cout=1",
+    "comparison": "included",
+    "points": 10
+  },
+  {
+    "name": "Task 2 - Delayed 4-bit Ripple Carry Adder",
+    "type": "io",
+    "setup": "./scripts/compile.sh lab01 task2 labs/lab01/task2/tb.v",
+    "run": "./scripts/run.sh lab01 task2 labs/lab01/task2/tb.v",
+    "expected": "a=1010 b=0101 cin=0 | sum=1111 cout=0",
+    "comparison": "included",
+    "points": 20
+  },
+  {
+    "name": "Task 3a - 4-bit Ripple Carry Adder (rca)",
+    "type": "io",
+    "setup": "echo 'module dut(input [3:0] a, b, input cin, output [3:0] sum, output cout); rca U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)); endmodule' > labs/lab01/task3/dut.v && ./scripts/compile.sh lab01 task3 labs/lab01/task3/tb.v",
+    "run": "./scripts/run.sh lab01 task3 labs/lab01/task3/tb.v",
+    "expected": "a=1010 b=0101 cin=0 | sum=1111 cout=0",
+    "comparison": "included",
+    "points": 10
+  },
+  {
+    "name": "Task 3b - 4-bit Carry-Lookahead Adder (cla4)",
+    "type": "io",
+    "setup": "echo 'module dut(input [3:0] a, b, input cin, output [3:0] sum, output cout); cla4 U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)); endmodule' > labs/lab01/task3/dut.v && ./scripts/compile.sh lab01 task3 labs/lab01/task3/tb.v",
+    "run": "./scripts/run.sh lab01 task3 labs/lab01/task3/tb.v",
+    "expected": "a=1010 b=0101 cin=0 | sum=1111 cout=0",
+    "comparison": "included",
+    "points": 10
+  },
+  {
+    "name": "Task 3c - 4-bit Dataflow Carry-Lookahead Adder (cla4_dataflow)",
+    "type": "io",
+    "setup": "echo 'module dut(input [3:0] a, b, input cin, output [3:0] sum, output cout); cla4_dataflow U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)); endmodule' > labs/lab01/task3/dut.v && ./scripts/compile.sh lab01 task3 labs/lab01/task3/tb.v",
+    "run": "./scripts/run.sh lab01 task3 labs/lab01/task3/tb.v",
+    "expected": "a=1010 b=0101 cin=0 | sum=1111 cout=0",
+    "comparison": "included",
+    "points": 10
+  },
+  {
+    "name": "Task 4a - 64-bit Ripple Carry Adder (rca64)",
+    "type": "io",
+    "setup": "echo 'module dut(input [63:0] a, b, input cin, output [63:0] sum, output cout); rca64 U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)); endmodule' > labs/lab01/task4/dut.v && ./scripts/compile.sh lab01 task4 labs/lab01/task4/tb.v",
+    "run": "./scripts/run.sh lab01 task4 labs/lab01/task4/tb.v",
+    "expected": "a=00000000075bcd15 b=000000003ade68b1 cin=0 | sum=00000000423a35c6 cout=0",
+    "comparison": "included",
+    "points": 10
+  },
+  {
+    "name": "Task 4b - 64-bit Flat CLA (cla64_flat)",
+    "type": "io",
+    "setup": "echo 'module dut(input [63:0] a, b, input cin, output [63:0] sum, output cout); cla64_flat U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)); endmodule' > labs/lab01/task4/dut.v && ./scripts/compile.sh lab01 task4 labs/lab01/task4/tb.v",
+    "run": "./scripts/run.sh lab01 task4 labs/lab01/task4/tb.v",
+    "expected": "a=00000000075bcd15 b=000000003ade68b1 cin=0 | sum=00000000423a35c6 cout=0",
+    "comparison": "included",
+    "points": 15
+  },
+  {
+    "name": "Task 4c - 64-bit Blocked CLA (cla64_blocked)",
+    "type": "io",
+    "setup": "echo 'module dut(input [63:0] a, b, input cin, output [63:0] sum, output cout); cla64_blocked U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)); endmodule' > labs/lab01/task4/dut.v && ./scripts/compile.sh lab01 task4 labs/lab01/task4/tb.v",
+    "run": "./scripts/run.sh lab01 task4 labs/lab01/task4/tb.v",
+    "expected": "a=00000000075bcd15 b=000000003ade68b1 cin=0 | sum=00000000423a35c6 cout=0",
+    "comparison": "included",
+    "points": 15
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "name": "classroom50-helper",
+  "displayName": "Classroom 50 Lab Assistant",
+  "description": "A helper extension for managing and submitting Classroom 50 assignments.",
+  "version": "0.0.1",
+  "publisher": "Abivankenobi",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "classroom50-explorer",
+          "title": "Classroom 50",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "classroom50-explorer": [
+        {
+          "id": "classroom50-navigator",
+          "name": "Lab Assistant"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "classroom50.sync",
+        "title": "Sync Lab Templates",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "classroom50.run",
+        "title": "Compile & Run",
+        "icon": "$(play)"
+      },
+      {
+        "command": "classroom50.submit",
+        "title": "Submit Task",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "classroom50.viewWaveform",
+        "title": "View Waveform",
+        "icon": "$(pulse)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "classroom50.sync",
+          "when": "view == classroom50-navigator",
+          "group": "navigation@1"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "classroom50.run",
+          "when": "view == classroom50-navigator && viewItem == task",
+          "group": "inline@1"
+        },
+        {
+          "command": "classroom50.viewWaveform",
+          "when": "view == classroom50-navigator && viewItem == task",
+          "group": "inline@2"
+        },
+        {
+          "command": "classroom50.submit",
+          "when": "view == classroom50-navigator && viewItem == task",
+          "group": "inline@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Classroom 50 Helper",
+      "properties": {
+        "classroom50.templateRemoteUrl": {
+          "type": "string",
+          "default": "",
+          "description": "The URL of the instructor's template repository."
+        },
+        "classroom50.submissionMethod": {
+          "type": "string",
+          "enum": [
+            "commit-push-main",
+            "push-to-branch"
+          ],
+          "default": "commit-push-main",
+          "description": "How tasks are submitted. 'commit-push-main' commits with a tag and pushes main; 'push-to-branch' pushes to a dedicated task branch."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/vscode": "^1.75.0",
+    "typescript": "^4.9.4"
+  }
+}

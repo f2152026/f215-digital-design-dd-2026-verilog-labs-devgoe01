@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+
+  "inputs": [
+    {
+      "id": "lab",
+      "type": "promptString",
+      "description": "Enter lab (e.g. lab01)"
+    },
+    {
+      "id": "task",
+      "type": "promptString",
+      "description": "Enter task (e.g. task0)"
+    },
+    {
+      "id": "tb",
+      "type": "promptString",
+      "description": "Enter testbench file (e.g. tb_mux.v)"
+    }
+  ],
+
+  "tasks": [
+    {
+      "label": "Compile (lab + task + testbench)",
+      "type": "shell",
+      "command": "./scripts/compile.sh ${input:lab} ${input:task} ${input:tb}",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run (generate VCD)",
+      "type": "shell",
+      "command": "./scripts/run.sh ${input:lab} ${input:task} ${input:tb}",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}
