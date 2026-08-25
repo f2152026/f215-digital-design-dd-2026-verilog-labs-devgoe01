@@ -1,0 +1,12 @@
+schema: "classroom50/repo-config/v1"
+classroom: "f215-digital-design"
+assignment: "dd-2026-verilog-labs"
+owner:
+  username: "devgoe01"
+  id: 177453391
+  accepted_at: "2026-08-25T07:50:25Z"
+source:
+  owner: "f2152026"
+  owner_id: 316136693
+  repo: "verilog-labs"
+  branch: "main"
