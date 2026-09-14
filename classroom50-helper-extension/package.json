@@ -43,7 +43,7 @@
       },
       {
         "command": "classroom50.submit",
-        "title": "Submit Task",
+        "title": "Submit Lab",
         "icon": "$(cloud-upload)"
       },
       {
@@ -73,8 +73,25 @@
         },
         {
           "command": "classroom50.submit",
-          "when": "view == classroom50-navigator && viewItem == task",
+          "when": "view == classroom50-navigator && viewItem == lab",
           "group": "inline@3"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "classroom50.run",
+          "when": "resourceExtname == .v",
+          "group": "navigation@1"
+        },
+        {
+          "command": "classroom50.viewWaveform",
+          "when": "resourceExtname == .v",
+          "group": "navigation@2"
+        },
+        {
+          "command": "classroom50.submit",
+          "when": "resourceExtname == .v",
+          "group": "navigation@3"
         }
       ]
     },

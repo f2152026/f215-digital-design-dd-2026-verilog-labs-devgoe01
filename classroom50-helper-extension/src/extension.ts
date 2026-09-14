@@ -25,14 +25,16 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    // 4. Register Submit Task command
+    // 4. Register Submit Lab command
     const submitCommand = vscode.commands.registerCommand('classroom50.submit', async (item?: LabTreeItem) => {
         let labName: string | undefined;
-        let taskName: string | undefined;
 
-        if (item && item.contextValue === 'task') {
-            labName = item.parentLab;
-            taskName = item.label;
+        if (item) {
+            if (item.contextValue === 'lab') {
+                labName = item.label;
+            } else if (item.contextValue === 'task') {
+                labName = item.parentLab;
+            }
         } else {
             // Try to auto-detect from active editor
             const activeEditor = vscode.window.activeTextEditor;
@@ -40,27 +42,26 @@ export function activate(context: vscode.ExtensionContext) {
                 const filePath = activeEditor.document.uri.fsPath;
                 const relativePath = vscode.workspace.asRelativePath(filePath);
                 const pathParts = relativePath.split(/[\\/]/);
-                if (pathParts[0] === 'labs' && pathParts[1] && pathParts[2]) {
+                if (pathParts[0] === 'labs' && pathParts[1]) {
                     labName = pathParts[1];
-                    taskName = pathParts[2];
                 }
             }
         }
 
-        if (!labName || !taskName) {
-            vscode.window.showWarningMessage('Please open a Verilog design file inside a task folder or select a task from the sidebar.');
+        if (!labName) {
+            vscode.window.showWarningMessage('Please open a Verilog design file inside a lab folder or select a lab from the sidebar.');
             return;
         }
 
-        // Ask student for confirmation to reduce accidental submits
+        // Ask student for confirmation and emphasize single submission policy
         const confirm = await vscode.window.showWarningMessage(
-            `Are you sure you want to submit ${labName} ${taskName}?`,
+            `⚠️ Are you sure you want to submit all of ${labName.toUpperCase()}? You are allowed only 1 submission attempt for this lab.`,
             { modal: true },
-            'Submit'
+            'Submit Lab'
         );
 
-        if (confirm === 'Submit') {
-            await GitManager.submitTask(labName, taskName);
+        if (confirm === 'Submit Lab') {
+            await GitManager.submitLab(labName);
             labTreeProvider.refresh();
         }
     });

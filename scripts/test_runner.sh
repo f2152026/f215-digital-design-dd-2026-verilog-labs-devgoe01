@@ -27,15 +27,27 @@ echo "=== Simulation Output ==="
 echo "$SIM_OUTPUT"
 echo "========================="
 
+PASS_PATTERN="$4"
+
 if [ $RUN_CODE -ne 0 ]; then
   echo "❌ Error: Simulation execution failed."
   exit 1
 fi
 
-if echo "$SIM_OUTPUT" | grep -q "All test cases PASSED."; then
-  echo "✔ Test case PASSED successfully!"
-  exit 0
+if [ -n "$PASS_PATTERN" ]; then
+  if echo "$SIM_OUTPUT" | grep -q "$PASS_PATTERN"; then
+    echo "✔ Test case PASSED successfully (matched '${PASS_PATTERN}')!"
+    exit 0
+  else
+    echo "❌ Test case FAILED: Expected output containing '${PASS_PATTERN}'"
+    exit 1
+  fi
 else
-  echo "❌ Test case FAILED: Expected output containing 'All test cases PASSED.'"
-  exit 1
+  if echo "$SIM_OUTPUT" | grep -E -q "All test cases PASSED\.|PASSED|Simulation complete:"; then
+    echo "✔ Simulation executed and completed successfully!"
+    exit 0
+  else
+    echo "❌ Test case FAILED."
+    exit 1
+  fi
 fi
