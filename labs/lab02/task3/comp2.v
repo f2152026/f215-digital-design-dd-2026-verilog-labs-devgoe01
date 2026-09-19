@@ -17,7 +17,7 @@ module comp2 (
 );
 
   assign EQ = (A == B);
-  assign GT = (A >= B);
+  assign GT = (A > B);
   assign LT = (A <  B);
 
 endmodule
