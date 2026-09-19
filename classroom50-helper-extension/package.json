@@ -43,7 +43,7 @@
       },
       {
         "command": "classroom50.submit",
-        "title": "Submit Lab",
+        "title": "Submit Task",
         "icon": "$(cloud-upload)"
       },
       {
@@ -73,7 +73,7 @@
         },
         {
           "command": "classroom50.submit",
-          "when": "view == classroom50-navigator && viewItem == lab",
+          "when": "view == classroom50-navigator && viewItem == task",
           "group": "inline@3"
         }
       ],

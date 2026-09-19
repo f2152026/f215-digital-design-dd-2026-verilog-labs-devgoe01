@@ -12,6 +12,6 @@ module mux_df (
   output wire Y
 );
 
-  assign Y = S ? I1 : I0;
+  assign Y = (S & I0) | ((~S) & I1);
 
 endmodule

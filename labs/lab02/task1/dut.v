@@ -9,21 +9,21 @@ module DUT (
   input  S,
   output Y
 );
- 
-  // ---- Option 1: dataflow version ----
-  mux_df U1 (
-    .I0 (I0),
-    .I1 (I1),
-    .S  (S),
-    .Y  (Y)
-  );
 
-  // ---- Option 2: behavioral version ----
-  // mux_beh U1 (
+  // ---- Option 1: dataflow version ----
+  // mux_df U1 (
   //   .I0 (I0),
   //   .I1 (I1),
   //   .S  (S),
   //   .Y  (Y)
   // );
+
+  // ---- Option 2: behavioral version ----
+  mux_beh U1 (
+    .I0 (I0),
+    .I1 (I1),
+    .S  (S),
+    .Y  (Y)
+  );
 
 endmodule

@@ -3,7 +3,7 @@
 // wide. dout continuously reflects mem[sel].
 //
 // YOU complete the two TODOs below. Everything else is given.
-  
+
 module lut #(
   parameter WIDTH = 8,
   parameter DEPTH = 4
@@ -19,16 +19,10 @@ module lut #(
   // TODO: initialize mem[i] = i*i for every i from 0 to DEPTH-1.
   // Use an initial block with a for loop -- this is the only place a ROM's
   // contents should be set up. (See the lab manual for why.)
-  initial begin 
-    for(int i = 0; i < DEPTH; i = i + 1) begin
-      mem[i] = i * i;
-    end
-  end
   
 
   // TODO: make dout continuously reflect mem[sel]. This is a combinational
   // read -- pick the right procedural block and sensitivity list.
-  always @(*)
-    dout = mem[sel];
+
 
 endmodule

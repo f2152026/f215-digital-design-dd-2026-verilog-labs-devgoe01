@@ -159,16 +159,16 @@ class LabTreeItem extends vscode.TreeItem {
             switch (this.status) {
                 case 'modified':
                     this.iconPath = new vscode.ThemeIcon('diff-modified', new vscode.ThemeColor('gitDecoration.modifiedResourceForeground'));
-                    this.tooltip = `${this.label} - Modified`;
+                    this.tooltip = `${this.label} - Modified (Ready to run or submit)`;
                     break;
                 case 'untracked':
                     this.iconPath = new vscode.ThemeIcon('new-file', new vscode.ThemeColor('gitDecoration.untrackedResourceForeground'));
-                    this.tooltip = `${this.label} - Untracked`;
+                    this.tooltip = `${this.label} - Untracked (New task)`;
                     break;
                 case 'clean':
                 default:
                     this.iconPath = new vscode.ThemeIcon('check', new vscode.ThemeColor('gitDecoration.addedResourceForeground'));
-                    this.tooltip = `${this.label} - Clean`;
+                    this.tooltip = `${this.label} - Submitted/Clean`;
                     break;
             }
         }

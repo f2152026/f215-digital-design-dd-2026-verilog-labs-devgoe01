@@ -4,14 +4,9 @@
 module tb;
 
   // TODO: declare the inputs and outputs
-  reg [1:0] t_sel;
-  wire [7:0] t_dout;
 
   // TODO: instantiate DUT here
-  lut DUT(
-    .sel(t_sel),
-    .dout(t_dout)
-  );
+
   // Waveform dump configuration (DO NOT CHANGE)
   string vcd_file;
   initial begin
@@ -23,17 +18,7 @@ module tb;
 
   initial begin
     // TODO: apply different input combinations
-    t_sel = 2'b00;
-    #10; 
-    
-    t_sel = 2'b01;
-    #10; 
-    
-    t_sel = 2'b10;
-    #10; 
-    
-    t_sel = 2'b11;
-    #10;
+
   end
 
   initial
