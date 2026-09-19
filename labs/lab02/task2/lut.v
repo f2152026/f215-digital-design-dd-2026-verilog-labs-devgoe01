@@ -3,7 +3,7 @@
 // wide. dout continuously reflects mem[sel].
 //
 // YOU complete the two TODOs below. Everything else is given.
-
+ 
 module lut #(
   parameter WIDTH = 8,
   parameter DEPTH = 4
