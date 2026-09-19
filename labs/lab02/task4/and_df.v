@@ -1,5 +1,5 @@
 module and_df(
-    input a,
+    input a, 
     input b,
     output y
 );
