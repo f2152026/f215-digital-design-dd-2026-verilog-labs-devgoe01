@@ -76,13 +76,17 @@ export class LabTreeProvider implements vscode.TreeDataProvider<LabTreeItem> {
                         status
                     );
 
-                    // Add command to open main file (dut.v) on click
-                    const dutFile = path.join(taskPath, 'dut.v');
-                    if (fs.existsSync(dutFile)) {
+                    // Add command to open primary design file on click
+                    const filesInTask = fs.readdirSync(taskPath);
+                    const primaryFile = filesInTask.find(f => f === 'dut.v') ||
+                                        filesInTask.find(f => f.endsWith('.v') && !f.startsWith('tb') && !f.endsWith('_tb.v')) ||
+                                        filesInTask.find(f => f === 'tb.v') ||
+                                        filesInTask.find(f => f.endsWith('.v'));
+                    if (primaryFile) {
                         item.command = {
                             command: 'vscode.open',
-                            title: 'Open dut.v',
-                            arguments: [vscode.Uri.file(dutFile)]
+                            title: `Open ${primaryFile}`,
+                            arguments: [vscode.Uri.file(path.join(taskPath, primaryFile))]
                         };
                     }
                     taskItems.push(item);

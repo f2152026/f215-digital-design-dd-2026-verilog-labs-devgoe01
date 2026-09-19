@@ -76,6 +76,23 @@
           "when": "view == classroom50-navigator && viewItem == task",
           "group": "inline@3"
         }
+      ],
+      "editor/title": [
+        {
+          "command": "classroom50.run",
+          "when": "resourceExtname == .v",
+          "group": "navigation@1"
+        },
+        {
+          "command": "classroom50.viewWaveform",
+          "when": "resourceExtname == .v",
+          "group": "navigation@2"
+        },
+        {
+          "command": "classroom50.submit",
+          "when": "resourceExtname == .v",
+          "group": "navigation@3"
+        }
       ]
     },
     "configuration": {
